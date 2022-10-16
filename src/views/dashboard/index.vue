@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
-
+    <div class="dashboard-text">name: {{ userName }}</div>
+    是啊
   </div>
 </template>
 
@@ -9,13 +9,24 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'Dashboard',
+  created() {
+    const a = _.uniq([2, 1, 2]);
+    console.log('去重数组', a)
+    // let x = -1
+    // if (x < 0) {
+    //   throw new Error('x 必须为正数');
+    // }
+  },
   components: {
 
   },
   computed: {
     ...mapGetters([
-      'name'
+      'userName'
     ])
+  },
+  methods: {
+
   }
 }
 </script>

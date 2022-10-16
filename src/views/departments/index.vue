@@ -8,14 +8,12 @@
         <el-tree :data="departs" :props="defaultProps" :default-expand-all="true">
           <!-- 插槽内容 有多少departs对象 就循环多少次tree-tools -->
           <!-- 作用域插槽 slot-scope="obj" 接收传递给插槽的数据   data 每个节点的数据对象-->
-          <tree-tools slot-scope="{ data }" :tree-node="data" @delDepts="getDepartments"
-            @addDepts="addDepts" @editDepts="editDepts" />
+          <tree-tools slot-scope="{ data }" :tree-node="data" @delDepts="getDepartments" @addDepts="addDepts" @editDepts="editDepts" />
         </el-tree>
       </el-card>
     </div>
     <!-- 放置新增子部门弹窗组件 -->
-    <add-depts ref="addDepts" :show-dialog.sync="showDialog" :tree-node="node"
-      @addDepts="getDepartments" />
+    <add-depts ref="addDepts" :show-dialog.sync="showDialog" :tree-node="node" @addDepts="getDepartments" />
   </div>
 </template>
 
@@ -64,6 +62,9 @@ export default {
       }
       // transtListToTree方法将扁平数组转化为树形结构
       this.departs = transtListToTree(result.depts, '')
+      console.log('result.depts', result.depts)
+      console.log('this.departs', this.departs)
+
     },
     addDepts(node) {
       this.showDialog = true
